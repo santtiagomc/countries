@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { Country } = require("../db");
-const router = Router();
+const { Country, Activity } = require("../db");
 const { getAllCountrys } = require("./auxiliars");
 
-router.get("/", async(req, res) => {
+const router = Router();
+
+router.get("/", async (req, res) => {
     try {
         const {name} = req.query;
         let totalCitys = await getAllCountrys();
@@ -15,7 +16,7 @@ router.get("/", async(req, res) => {
                 res.status(200).send(cityName) : 
                 res.status(404).send(`error ${name}, invalido`)
         } else {
-            res.status(200).json(totalCitys ? totalCitys : `Ningun ${name}, encontrado`)
+            res.status(200).send(totalCitys ? totalCitys : `Ningun ${name}, encontrado`)
         }
     } catch (error) {
         console.log(error)
@@ -38,30 +39,17 @@ router.get("/:id", async (req, res) => {
     }
 })
 
-router.post("/", async (req, res) => {
-    let {
-        name,
-        difficulty,
-        time,
-        season,
-        country,
-        createdInDataBase
-    } = req.body
+router.get ("/all", async (req, res) => {
     try {
-        let newActivity = await Country.create ({
-            name,
-            difficulty,
-            time,
-            season,
-            createdInDataBase
-        })
-        let activityCountry = await Country.findAll( {
-            where: {name: country}
-        })
-
-        newActivity.addCountry(activityCountry)
-        res.send('Actividad creada con exito!')
+        let countries = await Country.findAll  ({
+            include: {model: Activity},
+        });
+        return res.json (countries);
     } catch (error) {
-        res.status(500).send("error: post failed")
+        res.status(505).send(error);
     }
 })
+
+
+
+module.exports = router;

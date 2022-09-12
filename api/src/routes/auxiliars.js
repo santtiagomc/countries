@@ -6,12 +6,12 @@ const getApiInfo = async () => {
     const apiUrl = await axios('https://restcountries.com/v3/all')
     const apiInfo = await apiUrl.data.map(el => {
         return {
-            id: el.id,
-            name: el.name,
-            flag: el.flag,
-            continent: el.continent,
-            capital: el.capital,
-            subregion: el.subregion,
+            id: el.cca3,
+            name: el.name.common,
+            flags: el.flags[1],
+            continents: el.continents[0],
+            capital: el.capital ? el.capital[0] : 'Capital undefined',
+            subregion: el.subregion ? el.subregion : 'Subregion undefined',
             area: el.area,
             population: el.population
         }
@@ -19,17 +19,18 @@ const getApiInfo = async () => {
     return apiInfo;
 }
 
+
 const getDbInfo = async () => {
-    return await Country.findAll ({
-        include: {
-            model: Activity,
-            attributes: ["name", "difficult", "duration", "season"],
-            through: {
-                attributes: []
-            }
-        }
-    })
-}
+  return await Country.findAll({
+    include: {
+      model: Activity,
+      attibutes: ['name'],
+      through: {
+        attibutes: []
+      }
+    }
+  });
+};
 
 const getAllCountrys = async () => {
     const apiInfo = await getApiInfo();
@@ -37,5 +38,6 @@ const getAllCountrys = async () => {
     const infoTotal = apiInfo.concat(dbInfo);
     return infoTotal
 };
+// console.log(getAllCountrys(apiInfo))
 
 module.exports = { getAllCountrys }
