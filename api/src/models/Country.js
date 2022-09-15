@@ -6,10 +6,9 @@ module.exports = (sequelize) => {
   
   sequelize.define('country', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
-      allowNull: false,
-      primaryKey: true, 
+      type: DataTypes.STRING,
+        allowNull: false,
+        primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -38,13 +37,9 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.INTEGER,
       allowNull: true,
-    },
-    createdInDataBase: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
     }
-    
-  });
+  },
+  { timestamp: false }
+  );
   // console.log("modelo country final")
 };

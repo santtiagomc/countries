@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    
     sequelize.define('activity', {
         name:{
             type: DataTypes.STRING,
@@ -19,6 +18,7 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM("Summer", "Winter", "Spring", "Autumn"),
             allowNull: false
         }
-    });
-    
+    },
+    { timestamp: false }
+    );
 };
