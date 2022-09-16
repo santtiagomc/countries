@@ -16,30 +16,31 @@ router.get('/', async (req, res, next) => {
  });
 
 
- let postActivity = async (name, difficulty, duration, season, country) => {
-    try{    
-        let countriesFind = await Country.findAll({where: {name: country}});
-        if(!countriesFind.length) return "no country";
-        let newAct = await Activity.create({ name, difficulty, duration, season });
-        return await newAct.addCountry(countriesFind);
-    }catch(e){
-        console.log(e)
-    }
-    }
-    
+router.post("/", async (req, res) => {
+    let {
+        name,
+        difficulty,
+        duration,
+        season,
+        country
+    } = req.body
+    try {
+        let newActivity = await Activity.create ({
+            name,
+            difficulty,
+            duration,
+            season
+        })
+        let activityCountry = await Country.findAll( {
+            where: {name: country}
+        })
 
- router.post("/",async (req,res,next)=>{
-    let { name, difficulty, duration, season, country} = req.body;
-        if(!name || !difficulty || !duration || !season || !country){
-            res.status(500).send("data missing");
-        }
-        try{
-            let act = await postActivity(name, difficulty, duration, season, country);
-            res.status(200).json(act)
-        }catch(e){  
-            next(e)
-        }
-    })
+        newActivity.addCountry(activityCountry)
+        res.status(200).send(`La actividad ${name} ha sido creada`)
+    } catch (error) {
+        res.status(500).send("error: post failed")
+    }
+})
 
 router.delete('/:id', async (req, res) => {
     try {

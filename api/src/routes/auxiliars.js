@@ -1,46 +1,47 @@
 const axios = require ("axios");
 const { Country, Activity } = require ("../db")
 
-
-const addCountriesDB = async () => {
-  const { data } = await axios.get("https://restcountries.com/v3/all");
-
-  let countries = data.map((country) => ({
-    id: country.cca3,
-    name: country.name.common,
-    flag: country.flags[1],
-    continent: country.region,
-    capital: country.capital?.map((e) => e) || ["No tiene capital"],
-    subregion: country.subregion,
-    area: country.area,
-    population: country.population,
-  }));
-
-  countries = Array.from(new Set(countries));//.sort();//array limpio usando set
-  console.log(countries);
-  const countriesDB = await Country.bulkCreate(countries);
-  return countriesDB;
-};
-
-
-/* const getDbInfo = async () => {
-  return await Country.findAll({
-    include: {
-      model: Activity,
-      attibutes: ['name'],
-      through: {
-        attibutes: []
+const getCountriesInfo = async () => { 
+  try{
+  const apiUrl = await axios.get('https://restcountries.com/v3/all');
+  const countryData = apiUrl.data.map(el => {
+      return{
+          id: el.cca3,
+          name:el.name.common,
+          flags:el.flags[1],
+          continents: el.continents[0],
+          capital: el.capital? el.capital[0]: "This Capital doesn't exist",
+          subregion: el.subregion? el.subregion: "This Subregion doesn't exist" ,
+          area: el.area,
+          population: el.population
       }
-    }
+  })
+  const allcountries = await Country.findAll({
+      include: Activity
   });
-};
-
-const getAllCountrys = async () => {
-    const apiInfo = await getApiInfo();
-    const dbInfo = await getDbInfo();
-    const infoTotal = apiInfo.concat(dbInfo);
-    return infoTotal
-}; */
-// console.log(getAllCountrys(apiInfo))
-
-module.exports = { addCountriesDB }
+  if(!allcountries[0]){
+  countryData.forEach(el => {
+               Country.findOrCreate({
+                   where: {
+                            id: el.id,
+                            name: el.name,
+                            flags: el.flags,
+                            continents: el.continents,
+                            capital: el.capital,
+                            subregion: el.subregion,
+                            area: el.area,
+                            population: el.population
+                          }
+                    })
+          })
+      }
+      const allcount = await Country.findAll({
+          include: Activity
+      });
+      return allcount
+  }
+  catch(error){
+      console.log("GETAPIINFO", error)
+  }
+}
+module.exports = { getCountriesInfo }

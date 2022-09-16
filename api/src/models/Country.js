@@ -5,10 +5,10 @@ module.exports = (sequelize) => {
   // defino el modelo
   
   sequelize.define('country', {
-    id: {
-      type: DataTypes.STRING,
-        allowNull: false,
-        primaryKey: true,
+    id:{
+      type: DataTypes.UUID,     // El tipo de dato UUID genera un número al azar para utilizar como serial.
+      defaultValue: DataTypes.UUIDV4, 
+      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
@@ -38,8 +38,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     }
-  },
-  { timestamp: false }
-  );
+  });
   // console.log("modelo country final")
 };
