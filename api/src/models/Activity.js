@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('activity', {
@@ -18,5 +18,8 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM("Summer", "Winter", "Spring", "Autumn"),
             allowNull: false
         }
-    });
+    },
+    {
+        timestamps: false,
+      });
 };
