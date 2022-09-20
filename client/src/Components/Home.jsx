@@ -1,34 +1,60 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCitys } from '../Redux/Actions'
+import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity } from '../Redux/Actions'
 import { Link } from "react-router-dom";
 import Card from "./Card";
+import Pagination from "./Pagination";
+import SearchBar from "./SearchBar";
 
 
 export default function Home () {
 
     const dispatch = useDispatch()
     const allCitys = useSelector((state) => state.countries)
-
-    const [currentPage] = useState(1)
+    const activities = useSelector(state => state.activities)
+    
+    const [currentPage, setCurrentPage] = useState(1)
     const cityPerPage = 10
     const numbersOfLastCity = currentPage * cityPerPage
     const numberOfFirstCity = numbersOfLastCity - cityPerPage
     
     const currentCity = allCitys.slice(numberOfFirstCity, numbersOfLastCity)
 
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     
 
+    function handleSelectContinent (e) {
+        e.preventDefault();
+        dispatch(filterByContinents(e.target.value))
+    }
+
+
+    
+    function handleFilterByActivity (el) {
+        el.preventDefault();
+        dispatch(filterActivity(el.target.value))
+    };
+    
     function handleClick(e){
         e.preventDefault();
         dispatch(getAllCitys());
     }
 
+    const [,setOrden] = useState('Default')
+    function handleSort (e){
+        e.preventDefault()
+        dispatch(orderSort(e.target.value))
+        setCurrentPage(1)
+        setOrden(e.target.value)
+    }
 
     useEffect (() => {
         dispatch(getAllCitys());
+        dispatch(getActivity());
     }, [dispatch])
 
     return (
@@ -42,21 +68,43 @@ export default function Home () {
             </div>
             <div>
                 <h3>Filter By</h3>
-                <select>
-                    <option value="continent">Continent</option>
-                    <option value="activity"> Activity</option>
+                <select onChange={(el) => handleFilterByActivity(el)}>
+                    <option value='sin filtro'>Sin filtrar</option>
+                    {activities.map((act) => (
+                        <option value={act.name}>{act.name}</option>
+                    ))}
+                </select> 
+                <select onChange={e => handleSelectContinent(e)} >
+                    <option value='All'>All Continents</option>
+                    <option value='Africa'>África</option>
+                    <option value='North America'>North America</option>
+                    <option value='South America'>South America</option>
+                    <option value='Antarctica'>Antártica</option>
+                    <option value='Asia'>Asia</option>
+                    <option value='Europe'>Europa</option>
+                    <option value='Oceania'>Oceanía</option>
+
                 </select>
-                <select>
+                <select onChange={e => handleSort(e)}>
                     <option value="default">Sort By...</option>
                     <option value="az">A-Z</option>
                     <option value="za">Z-A</option>
                 </select>
-                <select>
-                    <option value="asc">Max Population</option>
-                    <option value="desc">Min Population</option>
+                <select onChange={e => handleSort(e)}>
+                    <option value="default">Population</option>
+                    <option value="desc">Max Population</option>
+                    <option value="asc">Min Population</option>
                 </select>
-            
-               {
+                <div>
+                    <Pagination 
+                        cityPerPage={cityPerPage}
+                        allCitys={allCitys.length}
+                        paginado={paginado}
+                    />
+                </div>
+                <SearchBar />
+                <div>
+                {
                     currentCity.map(el => {
                         return(
                             <div key={el.id}>
@@ -65,12 +113,13 @@ export default function Home () {
                                     id = {el.id}
                                     continents = {el.continents}
                                     flags = {el.flags}
+                                    population = {el.population}
                                 />
                             </div>
                         )
                     })
                 }
-
+                </div>
             </div>
         </div>
     )
