@@ -31,7 +31,6 @@ export function getActivity () {
     }
 }
 export function filterByContinents (payload) {
-    console.log(payload)
     return {
         type: FILTER_BY_CONTINENT,
         payload
@@ -45,12 +44,8 @@ export function orderSort(payload){
     }
 }
 
-export function filterActivity (payload) {
-    return{
-        type: FILTER_ACTIVITY,
-        payload
-    }
-}
+
+
 
 export function getNameCity (payload) {
     return async function (dispatch) {
@@ -66,3 +61,9 @@ export function getNameCity (payload) {
         }
     }
 };
+export function filterActivity (payload){
+    return{
+        type: FILTER_ACTIVITY,
+        payload
+    }
+}

@@ -2,8 +2,9 @@ import { GET_ALL_CITYS, GET_ACTIVITY, FILTER_ACTIVITY, FILTER_BY_CONTINENT, ORDE
 
 const initialState = {
     countries: [],
+    filterCountries: [],
     activities: [],
-    allCountries: []
+    allCountries: [],
 }
 
 function rootReducer (state = initialState, action) {
@@ -11,7 +12,8 @@ function rootReducer (state = initialState, action) {
         case GET_ALL_CITYS:
             return {
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                filterCountries: action.payload
             }
         case GET_ACTIVITY:
             return {
@@ -27,65 +29,71 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 countries: continentFilter
             }
+
+        case FILTER_ACTIVITY:
+            let newArr = []
+            state.filterCountries.map(el => el.activities.forEach(e => {
+                if (e.name === action.payload) {
+                    newArr.push(el)
+                }
+            }))
+            return {
+                ...state,
+                countries: newArr
+            };
+
+
         case GET_NAME_CITY:
             return {
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                filterCountries: action.payload
             }
 
-        case FILTER_ACTIVITY:
-            let filter = action.payload === 'sin filtro'?state.allCountries : state.
-            allCountries.filter((country) => {
-                const activities= country.activities.map((a) => a.name)
-                return activities.includes(action.payload)
-            })
-            return {
-                ...state,
-                countries: filter
-            }
-
-        case ORDER_SORT:
-            if (action.payload === "default"){
-                return {
-                    ...state,
-                    countries: state.countries
+            
+            
+            case ORDER_SORT:
+                if (action.payload === "default"){
+                    return {
+                        ...state,
+                        countries: state.countries
+                    }
                 }
-            }
-            if (action.payload === "az") {
-                return {
-                    ...state,
-                    countries: state.countries.sort(function (a, b) {
-                        if (a.name > b.name) {
-                            return 1;
-                        }
-                        if (b.name > a.name) {
-                            return -1;
-                        }
-                        return 0
+                if (action.payload === "az") {
+                    return {
+                        ...state,
+                        countries: state.countries.sort(function (a, b) {
+                            if (a.name > b.name) {
+                                return 1;
+                            }
+                            if (b.name > a.name) {
+                                return -1;
+                            }
+                            return 0
                         }) 
+                    }
+                } 
+                if (action.payload === "za"){
+                    return{
+                        ...state,
+                        countries: state.countries.sort (function (a, b) {
+                            if (a.name > b.name) {
+                                return -1;
+                            }
+                            if (b.name > a.name) {
+                                return 1
+                            }
+                            return 0;
+                        }) 
+                        
+                    }
                 }
-            } 
-            if (action.payload === "za"){
-                return{
-                    ...state,
-                    countries: state.countries.sort (function (a, b) {
-                        if (a.name > b.name) {
-                            return -1;
-                        }
-                        if (b.name > a.name) {
-                            return 1
-                        }
-                        return 0;
-                    }) 
-
-                }
-            }
-            if(action.payload === "asc" ){
+                if(action.payload === "asc" ){
                 return {
                     ...state,
                     countries: state.countries.sort (function (a, b) {
-                    if (a.population > b.population) {
-                        return 1;
+                        if (a.population > b.population) {
+                            return 1;
                     }
                     if (b.population > a.population) {
                         return -1;
@@ -98,7 +106,7 @@ function rootReducer (state = initialState, action) {
                 return {
                     ...state,
                     countries: state.countries.sort (function (a, b) {
-                    if (a.population > b.population) {
+                        if (a.population > b.population) {
                         return -1;
                     }
                     if (b.population> a.population) {
@@ -106,13 +114,14 @@ function rootReducer (state = initialState, action) {
                     }
                     return 0;
                 }) 
-                }
+            }
         }
         else{
             return {
                 ...state,
             }
         }
+        
         default: 
             return state
     }

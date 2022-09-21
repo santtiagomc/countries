@@ -11,8 +11,8 @@ import SearchBar from "./SearchBar";
 export default function Home () {
 
     const dispatch = useDispatch()
-    const allCitys = useSelector((state) => state.countries)
-    const activities = useSelector(state => state.activities)
+    const allCitys = useSelector(state => state.countries)
+    // const activities = useSelector(state => state.activities)
     
     const [currentPage, setCurrentPage] = useState(1)
     const cityPerPage = 10
@@ -25,7 +25,9 @@ export default function Home () {
         setCurrentPage(pageNumber)
     }
 
-    
+    const allActivities = useSelector((state) => state.activities);
+    const activityName = allActivities.map(a => a.name)
+    // console.log('Activities: ', activitys);
 
     function handleSelectContinent (e) {
         e.preventDefault();
@@ -34,10 +36,11 @@ export default function Home () {
 
 
     
-    function handleFilterByActivity (el) {
-        el.preventDefault();
-        dispatch(filterActivity(el.target.value))
+    function handleFilterByActivity (e) {
+        e.preventDefault();
+        dispatch(filterActivity(e.target.value))
     };
+    
     
     function handleClick(e){
         e.preventDefault();
@@ -68,11 +71,13 @@ export default function Home () {
             </div>
             <div>
                 <h3>Filter By</h3>
-                <select onChange={(el) => handleFilterByActivity(el)}>
-                    <option value='sin filtro'>Sin filtrar</option>
-                    {activities.map((act) => (
-                        <option value={act.name}>{act.name}</option>
-                    ))}
+                <select onChange={e => handleFilterByActivity(e)}>
+                    <option value= 'All'>All Activities</option>
+                    {activityName.map((el) => {
+                            return (
+                                <option key={el} value={el}>{el}</option>
+                            )}
+                        )}
                 </select> 
                 <select onChange={e => handleSelectContinent(e)} >
                     <option value='All'>All Continents</option>
@@ -114,6 +119,7 @@ export default function Home () {
                                     continents = {el.continents}
                                     flags = {el.flags}
                                     population = {el.population}
+                                    key= {el}
                                 />
                             </div>
                         )
