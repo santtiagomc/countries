@@ -1,10 +1,10 @@
-import { GET_ALL_CITYS, GET_ACTIVITY, FILTER_ACTIVITY, FILTER_BY_CONTINENT, ORDER_SORT, GET_NAME_CITY} from "./Actions"
+import { GET_ALL_CITYS, GET_ACTIVITY, FILTER_ACTIVITY, FILTER_BY_CONTINENT, ORDER_SORT, GET_NAME_CITY, GET_DETAIL} from "./Actions"
 
 const initialState = {
     countries: [],
     filterCountries: [],
     activities: [],
-    allCountries: [],
+    details: []
 }
 
 function rootReducer (state = initialState, action) {
@@ -21,7 +21,7 @@ function rootReducer (state = initialState, action) {
                 activities: action.payload
             }
         case FILTER_BY_CONTINENT:
-            const allCountries = state.countries;
+            const allCountries = state.filterCountries;
             const continentFilter = action.payload === 'All' 
             ? allCountries 
             : allCountries.filter(e => e.continents === action.payload)
@@ -49,6 +49,13 @@ function rootReducer (state = initialState, action) {
                 countries: action.payload,
                 filterCountries: action.payload
             }
+        
+        case GET_DETAIL:
+            return {
+                ...state,
+                details : action.payload
+            }
+        
 
             
             

@@ -6,6 +6,7 @@ export const FILTER_ACTIVITY = "FILTER_ACTIVITY"
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const ORDER_SORT = "ORDER_SORT"
 export const GET_NAME_CITY = "GET_NAME_CITY"
+export const GET_DETAIL = "GET_DETAIL"
 
 
 export function getAllCitys () {
@@ -66,4 +67,18 @@ export function filterActivity (payload){
         type: FILTER_ACTIVITY,
         payload
     }
+}
+export function getDetail (payload) {
+    return async function(dispatch){
+        try{
+            const json = await axios.get(`http://localhost:3001/country/${payload}`)
+            return dispatch({
+                type: GET_DETAIL,
+                payload: json.data
+            });
+        }
+      catch(error){
+        alert("Try another ID")
+      }
+    }    
 }

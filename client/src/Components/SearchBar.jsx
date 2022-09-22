@@ -18,7 +18,8 @@ export default function SearchBar(){
     e.preventDefault();
     if(name.length === 0) {
         return alert ("Please write a city")
-    }else{
+    }
+    else{
         dispatch(getNameCity(name));
         setName("")
         }

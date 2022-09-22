@@ -19,15 +19,16 @@ router.get('/', async (req,res) => {
         }
     })
     if(name){
-        let countryName = await infoRutaPrincipal.filter(el => el.name.toLowerCase().includes(name.toLocaleLowerCase())) 
+        let countryName = await infoRutaPrincipal.filter(el => el.name.toUpperCase().includes(name.toUpperCase())) 
         countryName? 
         res.send(countryName):
         res.status(404).send("This Country doesn't exist")
     }else{
-        res.send(infoRutaPrincipal)
+        res.status(202).json(infoRutaPrincipal ? infoRutaPrincipal : `No ${name}, encontrado`)
     }
 }
 catch(error){
+    res.status(202).send("error: id invalido")
     console.log("COUNTRIES", error)
 }
 });

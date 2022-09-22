@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from "./Components/LandingPage"
 import Home from './Components/Home';
+import Detail from './Components/Detail';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Switch>
           <Route exact path = '/' component= {LandingPage}/>
           <Route exact path = '/home' component= {Home}/>
+          <Route path = '/home/:id' component={Detail}/>
         </Switch>
       </div>
     </BrowserRouter>
