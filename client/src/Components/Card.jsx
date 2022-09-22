@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Card({ name, flags, id,  continents, population}){
     return (
         <div>
-            <Link to = {`/home/${id}`}>
+            <Link to = {`/countries/${id}`}>
                 <h3>{name}</h3>
                 <h5>{continents}</h5>
                 <h3>{population}</h3>
