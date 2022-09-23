@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
         difficulty,
         duration,
         season,
-        country
+        countries
     } = req.body
     try {
         let newActivity = await Activity.create ({
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
             season
         })
         let activityCountry = await Country.findAll( {
-            where: {name: country}
+            where: {name: countries}
         })
 
         newActivity.addCountry(activityCountry)

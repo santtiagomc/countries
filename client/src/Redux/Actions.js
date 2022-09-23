@@ -7,6 +7,8 @@ export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const ORDER_SORT = "ORDER_SORT"
 export const GET_NAME_CITY = "GET_NAME_CITY"
 export const GET_DETAIL = "GET_DETAIL"
+export const POST_ACTIVITY = "POST_ACTIVITY"
+export const DELETE = "DELETE"
 
 
 export function getAllCitys () {
@@ -81,4 +83,33 @@ export function getDetail (payload) {
         alert("Try another ID")
       }
     }    
+}
+
+export function postActivity (payload) {
+    return async (dispatch) => {
+        try{
+            await axios.post('http://localhost:3001/activity', payload);
+            return {
+                type: POST_ACTIVITY,
+                }
+        } 
+        catch(error){
+              alert("Post failed")
+        }
+    } 
+}
+
+export function deleteActivity (payload){
+    return async function (dispatch){
+        try{
+            const response = await axios.delete(`http://localhost:3001/activity/${payload}`);
+            return {
+                type: DELETE,
+                payload: response.data
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 }

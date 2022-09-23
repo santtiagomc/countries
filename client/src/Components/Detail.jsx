@@ -1,13 +1,21 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../Redux/Actions";
+import { getDetail, deleteActivity } from "../Redux/Actions";
+import {useHistory} from 'react-router-dom'
+
 
 export default function Detail (props) {
     const dispatch = useDispatch()
     const id = props.match.params.id
     const country = useSelector((state) => state.details)
+    const history = useHistory()
 
-    
+
+    const handleDelete = (el) =>{
+        dispatch(deleteActivity(el.id))
+        alert("Delete Activity Successfully")
+        history.push('/countries')
+    }
 
     useEffect(() => {
         dispatch(getDetail(id));
@@ -21,6 +29,7 @@ export default function Detail (props) {
                             <div >
                             {country.length > 0 ?
                         <div>
+                            
                             <h1>{country[0].name}</h1>
                             <img src={country[0].flags} alt="img"  width="150px" height="100px"/>
                             <h4>Continent: {country[0].continents}</h4>
@@ -40,7 +49,7 @@ export default function Detail (props) {
                             }
                         </div>
                         : <h1>Loading...</h1>
-                        }  
+                        } 
                             </div>
 
                         </div>
