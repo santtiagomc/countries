@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity } from '../Redux/Actions'
-import { Link } from "react-router-dom";
+import Nav from "./Nav"
+import styles from "./styles/Home.module.css"
+
 import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
@@ -61,15 +63,22 @@ export default function Home () {
     }, [dispatch])
 
     return (
-        <div>
-            <div>
-                <Link to='/activity'>Crear Actividad</Link>
-                <h1>Vamos cities</h1>
-                <button onClick={e => {handleClick(e)}}>
-                    Volver a cargar todas las ciudades
+        <div className={styles.container}>
+            
+            <Nav />
+            <SearchBar />
+            <button onClick={e => {handleClick(e)}}>
+                    Refresh
                 </button>
-            </div>
             <div>
+                    <Pagination 
+                        cityPerPage={cityPerPage}
+                        allCitys={allCitys.length}
+                        paginado={paginado}
+                    />
+            </div>
+            
+            <div className={styles.filter}>
                 <h3>Filter By</h3>
                 <select onChange={e => handleFilterByActivity(e)}>
                     <option value= 'All'>Activities</option>
@@ -100,19 +109,16 @@ export default function Home () {
                     <option value="desc">Max Population</option>
                     <option value="asc">Min Population</option>
                 </select>
-                <div>
-                    <Pagination 
-                        cityPerPage={cityPerPage}
-                        allCitys={allCitys.length}
-                        paginado={paginado}
-                    />
-                </div>
-                <SearchBar />
-                <div>
+            </div>
+                
+                
+                
+            <div >
                 {
                     currentCity.map(el => {
                         return(
-                            <div key={el.id}>
+                            <div key={el.id} className={styles.card}>
+                                
                                 <Card 
                                     name = {el.name.toUpperCase()}
                                     id = {el.id}
@@ -125,9 +131,9 @@ export default function Home () {
                         )
                     })
                 }
-                </div>
             </div>
         </div>
+        
     )
 
 }

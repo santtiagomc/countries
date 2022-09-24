@@ -1,21 +1,17 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, deleteActivity } from "../Redux/Actions";
-import {useHistory} from 'react-router-dom'
+import { getDetail } from "../Redux/Actions";
+
 
 
 export default function Detail (props) {
     const dispatch = useDispatch()
     const id = props.match.params.id
     const country = useSelector((state) => state.details)
-    const history = useHistory()
+    
 
 
-    const handleDelete = (el) =>{
-        dispatch(deleteActivity(el.id))
-        alert("Delete Activity Successfully")
-        history.push('/countries')
-    }
+    
 
     useEffect(() => {
         dispatch(getDetail(id));
@@ -37,18 +33,26 @@ export default function Detail (props) {
                             <h4>Subregion: {country[0].subregion}</h4>
                             <h4>Area: {country[0].area}</h4>
                             <h4>Population: {country[0].population}</h4>
+                            <div>
                             {country[0].activities.length?
-                                <h4>Activities:</h4> 
+                                <h2>Activities:</h2> 
                                 : <h4>There isn't activities available</h4>
                             }
                             {   country[0].activities.map(el => {
                                     return(
-                                        <h5 key={el.id}>Name: {el.name} <br/> Difficulty: {el.difficulty} <br/> Duration: {el.duration} <br/> Season: {el.season}</h5>
+                                        <div key={el.id} >
+                                            <h4>Name: {el.name}</h4>
+                                            <h4>Difficulty: {el.difficulty}</h4>
+                                            <h4>Duration: {el.duration}</h4>
+                                            <h4>Season: {el.season}</h4>
+                                        </div>
                                     )
                                 })
                             }
+                            </div>
+                            
                         </div>
-                        : <h1>Loading...</h1>
+                        : <h1>Loading..</h1>
                         } 
                             </div>
 

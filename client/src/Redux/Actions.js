@@ -8,7 +8,6 @@ export const ORDER_SORT = "ORDER_SORT"
 export const GET_NAME_CITY = "GET_NAME_CITY"
 export const GET_DETAIL = "GET_DETAIL"
 export const POST_ACTIVITY = "POST_ACTIVITY"
-export const DELETE = "DELETE"
 
 
 export function getAllCitys () {
@@ -99,17 +98,3 @@ export function postActivity (payload) {
     } 
 }
 
-export function deleteActivity (payload){
-    return async function (dispatch){
-        try{
-            const response = await axios.delete(`http://localhost:3001/activity/${payload}`);
-            return {
-                type: DELETE,
-                payload: response.data
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-}
