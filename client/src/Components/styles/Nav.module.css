@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.creation {
+    font-size: medium;
+}
+
+.creation {
+    color: black;
+    font-size: xx-large;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.globe {
+    margin: 10px;
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+.globe {
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.globe:hover
+{
+    cursor: pointer;
+    transform: rotate(1080deg);
+    transition: all 2.5s ease-in-out 0s;
+}
