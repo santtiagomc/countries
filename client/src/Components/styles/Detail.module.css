@@ -1,0 +1,18 @@
+.container {
+    background-image: url("../Img/fondo4.png");
+   
+    height: 100vh;
+    background-color: #e8dfca96;
+}
+
+.loading {
+    animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+    from {
+        transform: loading(0deg);
+}
+    to {
+        transform: loading(359deg);
+}
+}   

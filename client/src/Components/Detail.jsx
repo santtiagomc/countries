@@ -1,6 +1,8 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../Redux/Actions";
+import Loading from "./Img/girando.gif"
+import styles from "./styles/Detail.module.css"
 
 
 
@@ -18,7 +20,7 @@ export default function Detail (props) {
     },[dispatch, id])
 
     return (
-        <div>
+        <div className={styles.container}>
             <div>
             {country ?
                         <div >
@@ -51,8 +53,8 @@ export default function Detail (props) {
                             }
                             </div>
                             
-                        </div>
-                        : <h1>Loading..</h1>
+                        </div >
+                        : <img src={Loading} alt="Loading..."  className={styles.loading}/>
                         } 
                             </div>
 
