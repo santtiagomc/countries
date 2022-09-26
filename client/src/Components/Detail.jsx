@@ -21,6 +21,9 @@ export default function Detail (props) {
     },[dispatch, id])
 
     return (
+    <div className={styles.container2}>
+        <Nav  />
+    
         <div className={styles.container}>
             
             {country ?
@@ -28,9 +31,7 @@ export default function Detail (props) {
             <div >
                 
                 {country.length > 0 ?
-                <div className={styles.nav}>
-                <Nav  />
-            
+                
                 <div className={styles.card}>
                     
                     <h1>{country[0].name}</h1>
@@ -65,12 +66,13 @@ export default function Detail (props) {
                         </div>
                     </div>
                 </div >
-                </div>
+                
                 : <img src={Loading} alt="Loading..."  className={styles.loading}/>
                 } 
             </div>
             : <p>No se encuentra detalles del Pais.</p>
             }
+        </div>
         </div>
     )
 

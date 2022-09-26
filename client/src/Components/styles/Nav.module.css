@@ -17,6 +17,7 @@
 .container2 {
     display: flex;
     height: 4rem;
+    width: 100%;
     backdrop-filter: invert(80%) blur(0.5px);
     justify-content: space-between;
     align-items: center;

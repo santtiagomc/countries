@@ -1,0 +1,81 @@
+.back{
+    background-image: url("../Img/fondo4.png");
+    
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.container {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 44rem;
+    height: 33rem;
+    backdrop-filter: sepia(90%) blur(2px) brightness(90%);
+    padding: 8px;
+}
+
+.select{
+    margin: 40px 0 0;
+    border-bottom: 1px solid black;
+}
+.select label{
+    font-weight: 600;
+    padding: 4px;
+}
+
+.err{
+    display: contents;
+    color: red;
+    padding: 4px;
+    font-weight: 500;
+}
+
+.btn{
+    margin: 18px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.countries{
+    word-break: break-all;
+}
+.options{
+    display: flex;
+    border: 1.5px solid black;
+    margin: 4px;
+    padding: 4px;
+    height: 80px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+}
+.countriesSelect{
+    margin: 20px;
+}
+.btnx{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.ul{
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.li{
+    list-style: none;
+    font-size: 14px;
+    margin: 0 2px 0 8px;
+}

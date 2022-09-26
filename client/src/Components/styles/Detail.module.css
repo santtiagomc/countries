@@ -1,13 +1,14 @@
+.container2
+{
+
+    background-image: url("../Img/fondo4.png");
+}
 .container {
     display: flex;
     justify-content: center;
-    background-image: url("../Img/fondo4.png");
     height: 100vh;
-    background-color: #e8dfca96;
 }
-.nav{
-    border-radius: 10px;
-}
+
 
 .card{
     border: 2px solid black;
