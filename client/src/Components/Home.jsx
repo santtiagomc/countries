@@ -21,7 +21,7 @@ export default function Home () {
     const numbersOfLastCity = currentPage * cityPerPage
     const numberOfFirstCity = numbersOfLastCity - cityPerPage
     
-    const currentCity = allCitys.slice(numberOfFirstCity, numbersOfLastCity)
+    const currentCity = currentPage === 1 ? allCitys.slice(numberOfFirstCity, numbersOfLastCity - 1) : allCitys.slice(numberOfFirstCity, numbersOfLastCity)
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -66,10 +66,8 @@ export default function Home () {
         <div className={styles.container}>
             
             <Nav />
-            <SearchBar />
-            <button onClick={e => {handleClick(e)}}>
-                    Refresh
-                </button>
+            
+            
             <div>
                     <Pagination 
                         cityPerPage={cityPerPage}
@@ -79,8 +77,12 @@ export default function Home () {
             </div>
             
             <div className={styles.filter}>
+            <button onClick={e => {handleClick(e)}} className={styles.refresh}>
+                Refresh
+            </button>
+            <SearchBar />
                 <h3>Filter By</h3>
-                <select onChange={e => handleFilterByActivity(e)}>
+                <select onChange={e => handleFilterByActivity(e)} className={styles.select}>
                     <option value= 'All'>Activities</option>
                     {activityName.map((el) => {
                             return (
@@ -88,7 +90,7 @@ export default function Home () {
                             )}
                         )}
                 </select> 
-                <select onChange={e => handleSelectContinent(e)} >
+                <select onChange={e => handleSelectContinent(e)} className={styles.select} >
                     <option value='All'>All Continents</option>
                     <option value='Africa'>África</option>
                     <option value='North America'>North America</option>
@@ -99,12 +101,12 @@ export default function Home () {
                     <option value='Oceania'>Oceanía</option>
 
                 </select>
-                <select onChange={e => handleSort(e)}>
+                <select onChange={e => handleSort(e)} className={styles.select}>
                     <option value="default">Sort By...</option>
                     <option value="az">A-Z</option>
                     <option value="za">Z-A</option>
                 </select>
-                <select onChange={e => handleSort(e)}>
+                <select onChange={e => handleSort(e)} className={styles.select}>
                     <option value="default">Population</option>
                     <option value="desc">Max Population</option>
                     <option value="asc">Min Population</option>

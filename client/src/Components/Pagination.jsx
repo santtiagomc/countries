@@ -12,7 +12,7 @@ export default function Pagination({cityPerPage, allCitys, paginado}) {
             <ul className={style.lista1}>
                 {pageNumber?.map(number => (
                     <li key={number}>
-                        <button onClick={() => paginado(number)}>
+                        <button onClick={() => paginado(number)} className={style.btn}>
                             {number}
                         </button>
                     </li>

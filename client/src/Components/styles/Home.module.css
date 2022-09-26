@@ -7,30 +7,53 @@
 
 .card {
     display: inline-grid;
-    margin: 16px;
+    margin: 6px;
     border: 1px solid black;
-    height: 310px;
-    width: 210px;
+    height: 160px;
+    width: 348px;
     backdrop-filter: sepia(90%) blur(1px) brightness(90%);
     border-radius: 14px;
+    text-decoration: none;
 }
 
 .filter h3 {
     color: white;
+    font-size: larger;
+    font-weight: 600;
 }
 
 .filter {
     backdrop-filter: invert(80%) blur(0.5px);
-    float: left;
-    margin: 14px;
-    margin-top: 20px;
-    border: 2px solid;
-    height: 22rem;
-    border-radius: 10px;
-    width: 10rem;
+    float: right;
+    height: 36rem;
+    width: 11rem;
+    margin-top: -56px;
 }
 
 .filter select {
-    margin-bottom: 30px;
+    margin: 20px;
 }
 
+.refresh{
+    float: right;
+    margin: 20px 60px 35px;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.refresh:hover {
+    background-color: #008CBA;
+      color: white;
+  }
+
+.select{
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.select:hover {
+    background-color: #008CBA;
+      color: white;
+  }

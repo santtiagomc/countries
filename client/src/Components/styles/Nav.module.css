@@ -1,25 +1,48 @@
-.container {
+
+.link{
+    font-size: medium;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+
+}
+.link:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+
+.container2 {
     display: flex;
-    justify-content: space-around;
+    height: 4rem;
+    backdrop-filter: invert(80%) blur(0.5px);
+    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.container2  p{
+    color: white;
+    position: absolute;
+    right: 80px;
+    list-style: none;
+    font-size: larger;
+    font-weight: 600;
 }
 
 .creation {
     font-size: medium;
+    
 }
 
-.creation {
-    color: black;
-    font-size: xx-large;
-    font-weight: 700;
-    text-decoration: none;
-}
+
 
 .globe {
-    margin: 10px;
+    margin: 16px;
     display: block;
-    width: 100px;
-    height: 100px;
+    height: 62px;
 }
 .globe {
     transition: all 0.3s ease-in-out 0s;
@@ -30,4 +53,8 @@
     cursor: pointer;
     transform: rotate(1080deg);
     transition: all 2.5s ease-in-out 0s;
+}
+.parr {
+    cursor: none;
+
 }

@@ -33,12 +33,16 @@
     border-radius: 10px;
 }
 .btn:hover {
+    background-color: #008CBA;
+      color: white;
+  }
+.btn:hover {
     animation: pulsate 2s ease-in-out ;
 }
 
 @keyframes pulsate {
     0%{
         box-shadow: 
-        0 0 40px #e3c47ada, 0 0 50px #e4b74cda;
+        0 0 40px #ffb300da, 0 0 50px #000000da;
     }
 }

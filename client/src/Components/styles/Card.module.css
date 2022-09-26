@@ -1,0 +1,42 @@
+.container {
+    text-decoration: none;
+}
+
+.titles{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.name {
+    text-decoration: none;
+    color: black;
+}
+
+.img{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+.info  {
+    width: 12rem;
+    margin-top: -32px;
+}
+.info p{
+    text-decoration: none;
+    color: black;
+}
+
+.detail{
+    float: right;
+    margin: -32px 8px;
+    width: 74px;
+    height: 26px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.detail:hover {
+    background-color: #008CBA;
+      color: white;
+  }
