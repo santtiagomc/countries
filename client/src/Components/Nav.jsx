@@ -7,6 +7,7 @@ export default function Nav () {
     return (
         <div className={styles.container2}>
             <div className={styles.container}>
+                    <Link to='/countries' className={styles.link}>Home</Link>
                     <Link to='/activity' className={styles.link}>Crear Actividad</Link>
                     <Link to='/about' className={styles.link}>About</Link>
             </div>

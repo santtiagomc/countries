@@ -1,18 +1,56 @@
 .container {
+    display: flex;
+    justify-content: center;
     background-image: url("../Img/fondo4.png");
-   
     height: 100vh;
     background-color: #e8dfca96;
 }
+.nav{
+    border-radius: 10px;
+}
 
-.loading {
-    animation: rotation 2s infinite linear;
+.card{
+    border: 2px solid black;
+    margin-top: 12px;
+    border-radius: 20px;
+    height: 34rem;
+    width:  40rem;
+    backdrop-filter: sepia(90%) blur(1px) brightness(90%);
 }
-@keyframes rotation {
-    from {
-        transform: loading(0deg);
+.containDetail {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    border-top: 2px solid black;
 }
-    to {
-        transform: loading(359deg);
+
+.detailtitle{
+    margin: 2px;
 }
-}   
+
+.detailCoun{
+    border-right: 2px solid black;
+    padding: 2px;
+    height: 20rem;
+    width: 20rem;
+}
+.activiInfo{
+    border: 1.5px solid black;
+    border-radius: 10px;
+    margin: 4px;
+}
+
+.activiInfo h4{
+    margin: 2px 0 4px 0;
+    padding: 2px;
+}
+
+.detailActiv h2{
+    height: 2rem;
+}
+
+.contActv{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
