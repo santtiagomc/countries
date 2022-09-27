@@ -16,7 +16,7 @@
 
 .container2 {
     display: flex;
-    height: 4rem;
+    height: 3rem;
     width: 100%;
     backdrop-filter: invert(80%) blur(0.5px);
     justify-content: space-between;
@@ -43,7 +43,7 @@
 .globe {
     margin: 16px;
     display: block;
-    height: 62px;
+    height: 44px;
 }
 .globe {
     transition: all 0.3s ease-in-out 0s;
