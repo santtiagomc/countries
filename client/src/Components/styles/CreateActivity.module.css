@@ -1,8 +1,7 @@
 .back{
     background-image: url("../Img/fondo4.png");
-    
-    justify-content: center;
     display: flex;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
 }
@@ -14,11 +13,14 @@
     width: 44rem;
     height: 33rem;
     backdrop-filter: sepia(90%) blur(2px) brightness(90%);
-    padding: 8px;
+    padding: 4px;
+    margin-top: 2rem;
 }
 
+
+
 .select{
-    margin: 40px 0 0;
+    margin: 34px 0 0;
     border-bottom: 1px solid black;
 }
 .select label{
