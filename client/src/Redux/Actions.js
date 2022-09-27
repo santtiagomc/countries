@@ -7,6 +7,7 @@ export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const ORDER_SORT = "ORDER_SORT"
 export const GET_NAME_CITY = "GET_NAME_CITY"
 export const GET_DETAIL = "GET_DETAIL"
+export const CLEAN_DETAIL = "CLEAN_DETAIL"
 export const POST_ACTIVITY = "POST_ACTIVITY"
 
 
@@ -46,9 +47,6 @@ export function orderSort(payload){
     }
 }
 
-
-
-
 export function getNameCity (payload) {
     return async function (dispatch) {
         try {
@@ -82,6 +80,13 @@ export function getDetail (payload) {
         alert("Try another ID")
       }
     }    
+}
+
+export function cleanDetail() {
+    return {
+        type: CLEAN_DETAIL,
+        payload
+    }
 }
 
 export function postActivity (payload) {

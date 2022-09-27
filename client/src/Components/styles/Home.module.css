@@ -1,9 +1,11 @@
 .container{
     background-image: url("../Img/fondo4.png");
-    width: 100%;
-    height: 100%;
-    background-color: #e8dfca96;
+    min-height: 100vh;
 }
+/* 
+.backcard{
+    height: 100vh;
+} */
 
 .card {
     display: inline-grid;
@@ -25,7 +27,7 @@
 .filter {
     backdrop-filter: invert(80%) blur(0.5px);
     float: right;
-    height: 36rem;
+    height: 35rem;
     width: 11rem;
     margin-top: -56px;
 }

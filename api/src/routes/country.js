@@ -19,8 +19,8 @@ router.get('/', async (req,res) => {
         }
     })
     if(name){
-        let countryName = await infoRutaPrincipal.filter(el => el.name.toUpperCase().includes(name.toUpperCase())) 
-        countryName? 
+        let countryName = await infoRutaPrincipal.filter(el => el.name.toLowerCase().includes(name.toLowerCase())) 
+        countryName.length? 
         res.send(countryName):
         res.status(404).send("This Country doesn't exist")
     }else{

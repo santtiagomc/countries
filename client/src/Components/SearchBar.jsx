@@ -17,28 +17,27 @@ export default function SearchBar(){
 
     function handleSubmit(e){
     e.preventDefault();
-    if(name.length === 0) {
-        return alert ("Please write a city")
-    }
-    else{
-        dispatch(getNameCity(name));
-        setName("")
+        if(name.length === 0) {
+            return alert ("Please write a city")
+        }
+        else{
+            dispatch(getNameCity(name));
+            setName("")
         }
     }
         
         return (
-        
-                <div className={styles.search}>
-                    <input
-                    type = "text"
-                    placeholder='Search...'
-                    value={name}
-                    autoComplete='off'
-                    onKeyPress={e => e.key === 'Enter' && handleSubmit(e)}
-                    onChange = {(e) => handleInputChange(e)}
-                    />
-                    <button type = 'submit' 
-                    onClick = {(e) => handleSubmit(e)} > Buscar </button>
-                </div>
+            <div className={styles.search}>
+                <input
+                type = "text"
+                placeholder='Search...'
+                value={name}
+                autoComplete='off'
+                onKeyPress={e => e.key === 'Enter' && handleSubmit(e)}
+                onChange = {(e) => handleInputChange(e)}
+                />
+                <button type = 'submit' 
+                onClick = {(e) => handleSubmit(e)} > Buscar </button>
+            </div>
         )
 }

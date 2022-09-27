@@ -1,10 +1,9 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity } from '../Redux/Actions'
+import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity, cleanDetail } from '../Redux/Actions'
 import Nav from "./Nav"
 import styles from "./styles/Home.module.css"
-
 import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
@@ -58,6 +57,7 @@ export default function Home () {
     }
 
     useEffect (() => {
+        dispatch(cleanDetail())
         dispatch(getAllCitys());
         dispatch(getActivity());
     }, [dispatch])
@@ -77,10 +77,10 @@ export default function Home () {
             </div>
             
             <div className={styles.filter}>
-            <button onClick={e => {handleClick(e)}} className={styles.refresh}>
-                Refresh
-            </button>
-            <SearchBar />
+                <button onClick={e => {handleClick(e)}} className={styles.refresh}>
+                    Refresh
+                </button>
+                <SearchBar />
                 <h3>Filter By</h3>
                 <select onChange={e => handleFilterByActivity(e)} className={styles.select}>
                     <option value= 'All'>Activities</option>
@@ -115,7 +115,7 @@ export default function Home () {
                 
                 
                 
-            <div >
+            <div className={styles.backcard}>
                 {
                     currentCity.map(el => {
                         return(
