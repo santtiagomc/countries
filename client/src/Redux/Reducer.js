@@ -66,46 +66,43 @@ function rootReducer (state = initialState, action) {
             return {
                 ...state
             }
-
-            
-            
-            case ORDER_SORT:
-                if (action.payload === "default"){
-                    return {
-                        ...state,
-                        countries: state.countries
-                    }
+        case ORDER_SORT:
+            if (action.payload === "default"){
+                return {
+                    ...state,
+                    countries: state.countries
                 }
-                if (action.payload === "az") {
-                    return {
-                        ...state,
-                        countries: state.countries.sort(function (a, b) {
-                            if (a.name > b.name) {
-                                return 1;
-                            }
-                            if (b.name > a.name) {
-                                return -1;
-                            }
-                            return 0
-                        }) 
-                    }
-                } 
-                if (action.payload === "za"){
-                    return{
-                        ...state,
-                        countries: state.countries.sort (function (a, b) {
-                            if (a.name > b.name) {
-                                return -1;
-                            }
-                            if (b.name > a.name) {
-                                return 1
-                            }
-                            return 0;
-                        }) 
-                        
-                    }
+            }
+            if (action.payload === "az") {
+                return {
+                    ...state,
+                    countries: state.countries.sort(function (a, b) {
+                        if (a.name > b.name) {
+                            return 1;
+                        }
+                        if (b.name > a.name) {
+                            return -1;
+                        }
+                        return 0
+                    }) 
                 }
-                if(action.payload === "asc" ){
+            } 
+            if (action.payload === "za"){
+                return{
+                    ...state,
+                    countries: state.countries.sort (function (a, b) {
+                        if (a.name > b.name) {
+                            return -1;
+                        }
+                        if (b.name > a.name) {
+                            return 1
+                        }
+                        return 0;
+                    }) 
+                    
+                }
+            }
+            if(action.payload === "asc" ){
                 return {
                     ...state,
                     countries: state.countries.sort (function (a, b) {
@@ -117,7 +114,7 @@ function rootReducer (state = initialState, action) {
                     }
                     return 0                        
                 }) 
-                }
+            }
             }
             if(action.payload === "desc"){
                 return {
@@ -130,15 +127,13 @@ function rootReducer (state = initialState, action) {
                         return 1
                     }
                     return 0;
-                }) 
+                })}
             }
-        }
-        else{
-            return {
-                ...state,
+            else{
+                return {
+                    ...state,
+                }
             }
-        }
-        
         default: 
             return state
     }

@@ -35,7 +35,7 @@ export default function Home () {
         e.preventDefault();
         dispatch(filterByContinents(e.target.value))
     }
-
+    
 
     
     function handleFilterByActivity (e) {

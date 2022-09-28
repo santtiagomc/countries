@@ -42,16 +42,4 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
-    try {
-        let {id} = req.params;
-        res.json(await Activity.destroy({
-            where: {id}
-        })
-        );
-    }catch (error){
-        res.send("borrado fallido")
-    }
-})
-
 module.exports = router;
