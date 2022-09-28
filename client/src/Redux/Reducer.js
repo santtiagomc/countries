@@ -1,4 +1,4 @@
-import { GET_ALL_CITYS, GET_ACTIVITY, FILTER_ACTIVITY, FILTER_BY_CONTINENT, ORDER_SORT, GET_NAME_CITY, GET_DETAIL, POST_ACTIVITY, CLEAN_DETAIL} from "./Actions"
+import { GET_ALL_CITYS, GET_ACTIVITY, FILTER_ACTIVITY, FILTER_BY_CONTINENT, ORDER_SORT, GET_NAME_CITY, GET_DETAIL, POST_ACTIVITY, CLEAN_DETAIL, BUTTON_POPULATION} from "./Actions"
 
 const initialState = {
     countries: [],
@@ -9,29 +9,30 @@ const initialState = {
 
 function rootReducer (state = initialState, action) {
     switch(action.type){
+        
         case GET_ALL_CITYS:
             return {
                 ...state,
                 countries: action.payload,
                 filterCountries: action.payload
             }
-        case GET_ACTIVITY:
-            return {
-                ...state,
-                activities: action.payload
-            }
-        case FILTER_BY_CONTINENT:
-            const allCountries = state.filterCountries;
-            const continentFilter = action.payload === 'All' 
-            ? allCountries 
-            : allCountries.filter(e => e.continents === action.payload)
-            return {
-                ...state,
-                countries: continentFilter
-            }
-
-        case FILTER_ACTIVITY:
-            let newArr = []
+            case GET_ACTIVITY:
+                return {
+                    ...state,
+                    activities: action.payload
+                }
+                case FILTER_BY_CONTINENT:
+                    const allCountries = state.filterCountries;
+                    const continentFilter = action.payload === 'All' 
+                    ? allCountries 
+                    : allCountries.filter(e => e.continents === action.payload)
+                    return {
+                        ...state,
+                        countries: continentFilter
+                    }
+                    
+                    case FILTER_ACTIVITY:
+                        let newArr = []
             state.filterCountries.map(el => el.activities.forEach(e => {
                 if (e.name === action.payload) {
                     newArr.push(el)
@@ -41,29 +42,29 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 countries: newArr
             };
+            
 
-
-        case GET_NAME_CITY:
-            return {
-                ...state,
-                countries: action.payload,
+            case GET_NAME_CITY:
+                return {
+                    ...state,
+                    countries: action.payload,
                 filterCountries: action.payload
             }
         
-        case GET_DETAIL:
-            return {
+            case GET_DETAIL:
+                return {
                 ...state,
                 details : action.payload
             }
-
+            
         case CLEAN_DETAIL: 
             return {
                 ...state,
                 details: []
             }
-    
-        case POST_ACTIVITY:
-            return {
+            
+            case POST_ACTIVITY:
+                return {
                 ...state
             }
         case ORDER_SORT:
@@ -108,15 +109,15 @@ function rootReducer (state = initialState, action) {
                     countries: state.countries.sort (function (a, b) {
                         if (a.population > b.population) {
                             return 1;
-                    }
+                        }
                     if (b.population > a.population) {
                         return -1;
                     }
                     return 0                        
                 }) 
             }
-            }
-            if(action.payload === "desc"){
+        }
+        if(action.payload === "desc"){
                 return {
                     ...state,
                     countries: state.countries.sort (function (a, b) {
@@ -136,7 +137,16 @@ function rootReducer (state = initialState, action) {
             }
         default: 
             return state
+        }
     }
-}
+    /* case BUTTON_POPULATION:
+        const populationMax = state.countries;
+        const filterPopu = action.payload === "btn"
+        ? populationMax
+        : populationMax.filter(e => e.population >= 50000000)
+        return {
+            ...state,
+            countries: filterPopu
+        } */
 
 export default rootReducer;

@@ -9,6 +9,7 @@ export const GET_NAME_CITY = "GET_NAME_CITY"
 export const GET_DETAIL = "GET_DETAIL"
 export const CLEAN_DETAIL = "CLEAN_DETAIL"
 export const POST_ACTIVITY = "POST_ACTIVITY"
+export const BUTTON_POPULATION = "BUTTON_POPULATION"
 
 
 export function getAllCitys () {
@@ -103,3 +104,9 @@ export function postActivity (payload) {
     } 
 }
 
+/* export function buttonPop (payload) {
+    return {
+        type: BUTTON_POPULATION,
+        payload
+    }
+} */

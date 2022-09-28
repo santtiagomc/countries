@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity, cleanDetail } from '../Redux/Actions'
+import { getAllCitys, getActivity, filterByContinents, orderSort, filterActivity, cleanDetail} from '../Redux/Actions'
 import Nav from "./Nav"
 import styles from "./styles/Home.module.css"
 import Card from "./Card";
@@ -36,7 +36,10 @@ export default function Home () {
         dispatch(filterByContinents(e.target.value))
     }
     
-
+    /* function handleBtnPopu (e) {
+        e.preventDefault();
+        dispatch(buttonPop(e.target.value))
+    } */
     
     function handleFilterByActivity (e) {
         e.preventDefault();
@@ -113,6 +116,10 @@ export default function Home () {
                     <option value="asc">Min Population</option>
                 </select>
             </div>
+
+            {/* <button onClick={e => handleBtnPopu(e)}>
+                oprime
+            </button> */}
                 
             <div className={styles.backcard}>
                 {currentCity.length > 0 ?
