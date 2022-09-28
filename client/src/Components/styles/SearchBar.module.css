@@ -15,6 +15,7 @@
       color: white;
   }
 .search input {
-    height: 24px;
+    height: 20px;
+    padding: 4px;
     border-radius: 20px;
 }

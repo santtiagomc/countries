@@ -7,6 +7,7 @@ import styles from "./styles/Home.module.css"
 import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
+import Loading from "./Img/girando.gif"
 
 
 export default function Home () {
@@ -113,26 +114,27 @@ export default function Home () {
                 </select>
             </div>
                 
-                
-                
             <div className={styles.backcard}>
-                {
-                    currentCity.map(el => {
-                        return(
-                            <div key={el.id} className={styles.card}>
-                                
-                                <Card 
-                                    name = {el.name.toUpperCase()}
-                                    id = {el.id}
-                                    continents = {el.continents}
-                                    flags = {el.flags}
-                                    population = {el.population}
-                                    key= {el}
-                                />
-                            </div>
-                        )
-                    })
-                }
+                {currentCity.length > 0 ?
+                <div>
+                {currentCity.map(el => {
+                    return(
+                        <div key={el.id} className={styles.card}>
+                            
+                            <Card 
+                                name = {el.name.toUpperCase()}
+                                id = {el.id}
+                                continents = {el.continents}
+                                flags = {el.flags}
+                                population = {el.population}
+                                key= {el}
+                            />
+                        </div>
+                    )
+                })} 
+                </div>
+                : <img src={Loading} alt="Loading..."/>
+            }
             </div>
         </div>
         

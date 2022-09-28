@@ -41,7 +41,7 @@ router.get("/:id", async (req, res) => {
             let cityId = await totalCitys.filter ( el => el.id.toLowerCase() == id.toLowerCase());
             cityId.length ? 
             res.status(200).json(cityId) :
-            req.status(404).send(`error: ${id} invalido`)
+            res.status(404).send(`error: ${id} invalido`)
         }
     } catch (error) {
         console.log(error)

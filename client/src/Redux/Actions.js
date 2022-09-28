@@ -82,7 +82,7 @@ export function getDetail (payload) {
     }    
 }
 
-export function cleanDetail() {
+export function cleanDetail(payload) {
     return {
         type: CLEAN_DETAIL,
         payload
