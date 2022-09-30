@@ -73,10 +73,13 @@ export default function Home () {
             
             
             <div>
+               
                     <Pagination 
                         cityPerPage={cityPerPage}
                         allCitys={allCitys.length}
                         paginado={paginado}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
                     />
             </div>
             
