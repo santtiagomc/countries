@@ -23,7 +23,6 @@ export default function Pagination({cityPerPage, allCitys, paginado, currentPage
             end: end,
         }
     }
-
     
     function nextPage() {
         setCurrentPage(currentPage + 1);
@@ -43,15 +42,15 @@ export default function Pagination({cityPerPage, allCitys, paginado, currentPage
     return (
         <nav>
             <ul className={style.lista1}>
-            <button onClick={prevPage} className={style.prev} disabled={currentPage === 1 || currentPage < 1}>Prev</button>
+            <button onClick={prevPage} className={style.btn} disabled={currentPage === 1 || currentPage < 1}>Prev</button>
             {pageNumber?.map(number => (
                     <li key={number}>
-                        <button onClick={() => paginado(number)} className={style.btn}>
+                        <button onClick={() => paginado(number)} className={(currentPage === number && style.btn2) || style.btn}>
                             {number}
                         </button>
                     </li>
                 ))}
-                <button onClick={nextPage} className={style.right} disabled={currentPage === Math.ceil(totalPages) || currentPage > Math.ceil(totalPages)}>Next</button>
+                <button onClick={nextPage} className={style.btn} disabled={currentPage === Math.ceil(totalPages) || currentPage > Math.ceil(totalPages)}>Next</button>
             </ul>
         </nav>
     )

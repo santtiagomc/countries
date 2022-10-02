@@ -1,20 +1,18 @@
 .lista1 {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    backdrop-filter: sepia(90%) blur(1px) brightness(90%);
-    border-radius: 8px;
-    height: 36px;
-    width: 64vw;
-    margin: 10px auto;
-    padding: 0;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  backdrop-filter: sepia(90%) blur(1px) brightness(90%);
+  border-radius: 8px;
+  height: 36px;
+  width: 20vw;
+  margin: 10px auto;
+  padding: 0;
+} 
 .lista1 li {
   display: flex;
   margin: 2px;
-}
-  
+} 
 .btn{
   border: 1px solid ;
   border-radius: 8px;
@@ -22,8 +20,14 @@
   cursor: pointer;
 }
 .btn:hover {
-  background-color: #008CBA;
-    color: white;
+  background-color: #2977ed;
+  color: white;
 }
-
-  
+.btn2 {
+  background-color: #2977ed;
+  color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 26px;
+  cursor: pointer;
+}

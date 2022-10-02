@@ -1,19 +1,17 @@
 .search{
-    margin-top: 4rem;
-    height: 8rem;
+    margin-top: 18px;
     border-bottom: 1px solid white;
-    border-top: 1px solid white;
 }
 .search button{
-    margin-top: 10px;
+    margin: 10px;
     padding: 6px;
     border-radius: 10px;
     cursor: pointer;
 }
 .search button:hover {
-    background-color: #008CBA;
-      color: white;
-  }
+    background-color: #2977ed;
+    color: white;
+}
 .search input {
     height: 20px;
     padding: 4px;

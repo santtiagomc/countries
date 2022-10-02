@@ -1,19 +1,16 @@
-
 .link{
     font-size: medium;
     text-decoration: none;
     color: white;
-    padding: 10px;
+    padding: 6px;
     margin: 10px;
     border-radius: 10px;
 
 }
 .link:hover {
-    background-color: #008CBA;
+    background-color: #2977ed;
     color: white;
 }
-
-
 .container2 {
     display: flex;
     height: 3rem;
@@ -23,7 +20,6 @@
     align-items: center;
     border-bottom: 1px solid white;
 }
-
 .container2  p{
     color: white;
     position: absolute;
@@ -32,14 +28,10 @@
     font-size: larger;
     font-weight: 600;
 }
-
 .creation {
     font-size: medium;
     
 }
-
-
-
 .globe {
     margin: 16px;
     display: block;
@@ -48,14 +40,11 @@
 .globe {
     transition: all 0.3s ease-in-out 0s;
 }
-
-.globe:hover
-{
+.globe:hover {
     cursor: pointer;
     transform: rotate(1080deg);
     transition: all 2.5s ease-in-out 0s;
 }
 .parr {
     cursor: none;
-
 }

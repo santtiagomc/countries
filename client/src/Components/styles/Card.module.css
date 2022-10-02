@@ -1,13 +1,11 @@
 .container {
     text-decoration: none;
 }
-
 .titles{
     display: flex;
     justify-content: space-between;
     padding: 8px;
 }
-
 .name {
     text-decoration: none;
     color: black;
@@ -21,12 +19,14 @@
 .info  {
     width: 12rem;
     margin-top: -32px;
+    margin-left: 6px;
+    font-weight: 600;
 }
 .info p{
     text-decoration: none;
     color: black;
+    display: flex;
 }
-
 .detail{
     float: right;
     margin: -32px 8px;
@@ -35,8 +35,7 @@
     border-radius: 20px;
     cursor: pointer;
 }
-
 .detail:hover {
-    background-color: #008CBA;
-      color: white;
-  }
+    background-color: #2977ed;
+    color: white;
+}

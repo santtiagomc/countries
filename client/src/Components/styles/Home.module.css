@@ -6,7 +6,6 @@
 .backcard{
     height: 100vh;
 } */
-
 .card {
     display: inline-grid;
     margin: 6px;
@@ -17,25 +16,20 @@
     border-radius: 14px;
     text-decoration: none;
 }
-
 .filter h3 {
     color: white;
     font-size: larger;
     font-weight: 600;
 }
-
 .filter {
     backdrop-filter: invert(80%) blur(0.5px);
     float: right;
     height: 35rem;
     width: 11rem;
-    margin-top: -56px;
 }
-
 .filter select {
     margin: 20px;
 }
-
 .refresh{
     float: right;
     margin: 20px 60px 35px;
@@ -44,19 +38,15 @@
     border-radius: 10px;
     cursor: pointer;
 }
-
 .refresh:hover {
-    background-color: #008CBA;
+    background-color: #2977ed;
     color: white;
 }
-
 .select{
     padding: 6px;
     border-radius: 10px;
 }
-
 .select:hover {
-    background-color: #008CBA;
+    background-color: #2977ed;
     color: white;
 }
-

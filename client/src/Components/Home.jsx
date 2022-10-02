@@ -68,34 +68,17 @@ export default function Home () {
 
     return (
         <div className={styles.container}>
-            
             <Nav />
-            
-            
-            <div>
-               
-                    <Pagination 
-                        cityPerPage={cityPerPage}
-                        allCitys={allCitys.length}
-                        paginado={paginado}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    />
-            </div>
-            
             <div className={styles.filter}>
-                <button onClick={e => {handleClick(e)}} className={styles.refresh}>
-                    Refresh
-                </button>
                 <SearchBar />
                 <h3>Filter By</h3>
                 <select onChange={e => handleFilterByActivity(e)} className={styles.select}>
                     <option value= 'All'>Activities</option>
                     {activityName.map((el) => {
-                            return (
-                                <option key={el} value={el}>{el}</option>
-                            )}
-                        )}
+                        return (
+                            <option key={el} value={el}>{el}</option>
+                        )
+                    })}
                 </select> 
                 <select onChange={e => handleSelectContinent(e)} className={styles.select} >
                     <option value='All'>All Continents</option>
@@ -106,7 +89,6 @@ export default function Home () {
                     <option value='Asia'>Asia</option>
                     <option value='Europe'>Europa</option>
                     <option value='Oceania'>Oceanía</option>
-
                 </select>
                 <select onChange={e => handleSort(e)} className={styles.select}>
                     <option value="default">Sort By...</option>
@@ -118,6 +100,9 @@ export default function Home () {
                     <option value="desc">Max Population</option>
                     <option value="asc">Min Population</option>
                 </select>
+            <button onClick={e => {handleClick(e)}} className={styles.refresh}>
+                Refresh
+            </button>
             </div>
 
             {/* <button onClick={e => handleBtnPopu(e)}>
@@ -125,26 +110,35 @@ export default function Home () {
             </button> */}
                 
             <div className={styles.backcard}>
+            <div>   
+                <Pagination 
+                   cityPerPage={cityPerPage}
+                   allCitys={allCitys.length}
+                   paginado={paginado}
+                   currentPage={currentPage}
+                   setCurrentPage={setCurrentPage}
+                />
+            </div>
                 {currentCity.length > 0 ?
-                <div>
-                {currentCity.map(el => {
-                    return(
-                        <div key={el.id} className={styles.card}>
-                            
-                            <Card 
-                                name = {el.name.toUpperCase()}
-                                id = {el.id}
-                                continents = {el.continents}
-                                flags = {el.flags}
-                                population = {el.population}
-                                key= {el}
-                            />
-                        </div>
-                    )
-                })} 
-                </div>
+                    <div>
+                        {currentCity.map(el => {
+                            return(
+                                <div key={el.id} className={styles.card}>
+                                    
+                                    <Card 
+                                        name = {el.name.toUpperCase()}
+                                        id = {el.id}
+                                        continents = {el.continents}
+                                        flags = {el.flags}
+                                        population = {el.population}
+                                        key= {el}
+                                    />
+                                </div>
+                            )
+                        })} 
+                    </div>
                 : <img src={Loading} alt="Loading..."/>
-            }
+                }
             </div>
         </div>
         

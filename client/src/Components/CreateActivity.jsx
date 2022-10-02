@@ -123,7 +123,6 @@ useEffect (() => {
                 <div className={styles.title}>
                     <h1>Create Activity</h1>
                 </div>
-                
                 <form onSubmit={e => handleSubmit(e)} className={styles.form}>
                     <div className={styles.select}>
                         <label>Name</label>
@@ -188,7 +187,7 @@ useEffect (() => {
                     </div>
                     {<div>
                         <button type ='submit' className={styles.btn}> CREATE </button>          
-                        <Link to="/countries">
+                        <Link to="/countries" className={styles.link}>
                         <button className={styles.btn}>BACK</button>
                         </Link>
                     </div>}
